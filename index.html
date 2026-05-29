@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shayshank Rathore — BI Developer, Data Engineer, MSc AI (First Class Honours, NCI Dublin), AI Product Builder, and Android Developer with 6+ apps on Google Play Store.">
+<title>Shayshank Rathore — BI · Data · AI · Android Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b2545;
+    --primary: #1f4e79;
+    --gold: #e8b339;
+    --green: #2e7d32;
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --text: #1b2740;
+    --muted: #55657a;
+    --soft: #e2eaf3;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(11, 37, 69, 0.08);
+    --shadow-hover: 0 8px 36px rgba(11, 37, 69, 0.16);
+  }
+  [data-theme="dark"] {
+    --bg: #0a1628;
+    --card: #122339;
+    --text: #e6ecf4;
+    --muted: #93a1b5;
+    --soft: #1f3553;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.6; overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--soft);
+    transition: background 0.3s;
+  }
+  [data-theme="dark"] nav { background: rgba(10, 22, 40, 0.85); }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 18px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo {
+    font-weight: 800; font-size: 18px; color: var(--primary);
+    text-decoration: none; letter-spacing: 0.3px;
+  }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .theme-toggle {
+    background: none; border: 1px solid var(--soft); color: var(--text);
+    width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover { border-color: var(--gold); }
+  .mobile-menu { display: none; background: none; border: none; cursor: pointer; color: var(--text); font-size: 24px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding: 120px 24px 80px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--primary) 100%);
+    color: white; position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50%; right: -10%;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 179, 57, 0.15) 0%, transparent 70%);
+    animation: float 12s ease-in-out infinite;
+  }
+  @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-20px, 20px); } }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-text { min-width: 0; }
+  .hero-photo {
+    position: relative; display: flex; justify-content: center; align-items: center;
+    animation: fadeInUp 1.4s ease-out;
+  }
+  .hero-photo::before {
+    content: ''; position: absolute; inset: -20px;
+    background: linear-gradient(135deg, var(--gold), transparent);
+    border-radius: 50%; opacity: 0.25; filter: blur(40px); z-index: 0;
+  }
+  .hero-photo img {
+    width: 100%; max-width: 340px; aspect-ratio: 1; object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(232, 179, 57, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    position: relative; z-index: 1;
+    transition: transform 0.3s ease-out;
+  }
+  .hero-photo img:hover { transform: scale(1.03); }
+  .hero-photo-fallback {
+    width: 100%; max-width: 340px; aspect-ratio: 1; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--primary) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 100px; font-weight: 800; color: white;
+    border: 4px solid rgba(232, 179, 57, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    position: relative; z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hero-cta, .hero-stats { justify-content: center; }
+    .hero-photo { order: -1; }
+    .hero-photo img, .hero-photo-fallback { max-width: 220px; }
+  }
+  .hero-badge {
+    display: inline-block; padding: 8px 16px; border-radius: 999px;
+    background: rgba(232, 179, 57, 0.15); color: var(--gold);
+    font-size: 13px; font-weight: 600; letter-spacing: 1px;
+    margin-bottom: 24px; border: 1px solid rgba(232, 179, 57, 0.3);
+    animation: fadeInUp 0.6s ease-out;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 80px); font-weight: 900;
+    line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-out;
+  }
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--gold), #f4d56a);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-tagline {
+    font-size: clamp(16px, 2vw, 22px); color: rgba(255, 255, 255, 0.85);
+    font-weight: 400; margin-bottom: 36px; max-width: 700px;
+    animation: fadeInUp 1s ease-out;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeInUp 1.2s ease-out; }
+  .btn {
+    padding: 14px 28px; border-radius: 999px; font-weight: 600; font-size: 15px;
+    text-decoration: none; transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: #f4d56a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232, 179, 57, 0.4); }
+  .btn-ghost { background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.2); }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-2px); }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 28px; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.15);
+    animation: fadeInUp 1.4s ease-out;
+  }
+  .stat-num { font-size: 36px; font-weight: 800; color: var(--gold); margin-bottom: 4px; }
+  .stat-label { font-size: 13px; color: rgba(255, 255, 255, 0.7); }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 24px; max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: var(--soft); color: var(--primary);
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 14px;
+  }
+  .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; }
+  .section-subtitle { font-size: 17px; color: var(--muted); max-width: 700px; margin-bottom: 50px; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start;
+  }
+  .about-photo {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    border-radius: var(--radius); box-shadow: var(--shadow);
+    margin-bottom: 24px; transition: transform 0.3s;
+  }
+  .about-photo:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+  .about-text p { margin-bottom: 18px; font-size: 16px; }
+  .about-card {
+    background: var(--card); border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .about-card h3 { font-size: 13px; letter-spacing: 2px; color: var(--primary); margin-bottom: 18px; font-weight: 700; }
+  .about-card ul { list-style: none; }
+  .about-card li {
+    padding: 10px 0; border-bottom: 1px solid var(--soft); font-size: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .about-card li:last-child { border-bottom: none; }
+  .about-card li strong { color: var(--text); }
+  .about-card li span { color: var(--muted); font-size: 13px; }
+
+  /* PROJECT FILTERS */
+  .filters {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;
+  }
+  .filter-btn {
+    padding: 8px 18px; border-radius: 999px; border: 1px solid var(--soft);
+    background: transparent; color: var(--muted); cursor: pointer; font-size: 13px;
+    font-weight: 600; transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* PROJECT CARDS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .project-card {
+    background: var(--card); border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow); transition: all 0.3s; position: relative; overflow: hidden;
+    border-top: 4px solid var(--primary);
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+  .project-card.live { border-top-color: var(--green); }
+  .project-card.android { border-top-color: #3DDC84; }
+  .project-card.ml { border-top-color: var(--gold); }
+  .project-card.web { border-top-color: var(--primary); }
+  .project-card.hidden { display: none; }
+  .project-badge {
+    display: inline-block; padding: 4px 10px; border-radius: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 14px;
+    background: var(--soft); color: var(--primary);
+  }
+  .project-card.live .project-badge { background: rgba(46, 125, 50, 0.12); color: var(--green); }
+  .project-card.android .project-badge { background: rgba(61, 220, 132, 0.12); color: #2c8d5a; }
+  .project-card.ml .project-badge { background: rgba(232, 179, 57, 0.15); color: #a87c1d; }
+  .project-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+  .project-card p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+  .project-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .project-meta span { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: var(--soft); color: var(--text); font-weight: 500; }
+  .project-link {
+    color: var(--primary); font-size: 13px; font-weight: 600; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .project-link:hover { color: var(--gold); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+    width: 2px; background: var(--soft);
+  }
+  .timeline-item { position: relative; padding-bottom: 36px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -34px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%; background: var(--primary);
+    box-shadow: 0 0 0 4px var(--card);
+  }
+  .timeline-item h3 { font-size: 18px; margin-bottom: 4px; }
+  .timeline-item .date { font-size: 12px; color: var(--gold); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
+  .timeline-item p { color: var(--muted); font-size: 14px; }
+  .timeline-tech { display: inline-block; font-size: 11px; padding: 3px 8px; background: var(--soft); border-radius: 4px; margin: 6px 4px 0 0; color: var(--text); font-weight: 500; }
+
+  /* SKILLS */
+  .skill-cloud {
+    display: flex; flex-wrap: wrap; gap: 10px; max-width: 900px;
+  }
+  .skill-tag {
+    padding: 8px 16px; background: var(--card); border-radius: 999px;
+    font-size: 13px; font-weight: 500; box-shadow: var(--shadow);
+    transition: all 0.2s; border: 1px solid var(--soft);
+  }
+  .skill-tag:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--primary); }
+  .skill-tag.hot { background: linear-gradient(135deg, var(--gold), #f4d56a); color: var(--navy); border: none; font-weight: 700; }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--navy); color: white; margin: 0; max-width: none;
+    padding: 100px 24px;
+  }
+  .contact-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .contact-section h2 { color: white; font-size: clamp(32px, 5vw, 56px); margin-bottom: 20px; }
+  .contact-section h2 span { color: var(--gold); }
+  .contact-section p { color: rgba(255, 255, 255, 0.7); font-size: 18px; margin-bottom: 36px; }
+  .contact-grid { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .contact-link {
+    padding: 14px 24px; background: rgba(255, 255, 255, 0.08); color: white;
+    border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.15); transition: all 0.2s;
+  }
+  .contact-link:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); transform: translateY(-2px); }
+  .contact-link.primary { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 700; }
+
+  footer { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; background: var(--navy); }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* SCROLL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--card); padding: 20px; box-shadow: var(--shadow);
+    }
+    .mobile-menu { display: block; }
+    .about-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo">Shayshank<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#android">Android</a>
+      <a href="#journey">Journey</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </div>
+    <button class="mobile-menu" id="mobileMenuBtn" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-badge">🟢 OPEN TO OPPORTUNITIES · GLOBALLY AVAILABLE</span>
+      <h1>I build <span class="highlight">products</span><br>that real people use.</h1>
+      <p class="hero-tagline">
+        MSc Artificial Intelligence (First Class Honours, NCI Dublin) · BI &amp; Data Engineer with 5+ years at Datafortune · AI Product Builder · Mobile Developer with 6+ apps shipped to Google Play Store.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work →</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">4,300+</div><div class="stat-label">Users on shipped AI tools</div></div>
+        <div><div class="stat-num">6+</div><div class="stat-label">Android apps on Play Store</div></div>
+        <div><div class="stat-num">35+</div><div class="stat-label">Public GitHub repos</div></div>
+        <div><div class="stat-num">1:1</div><div class="stat-label">First Class Honours, MSc AI</div></div>
+        <div><div class="stat-num">1,000+</div><div class="stat-label">Student community founded</div></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <!-- Drop your professional headshot at assets/headshot.jpg
+           Square (1:1) photos look best — 800x800 or larger.
+           If the image is missing, a stylish "SR" placeholder will show automatically. -->
+      <img src="assets/headshot.jpg" alt="Shayshank Rathore"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="hero-photo-fallback" style="display:none;">SR</div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <span class="section-tag">ABOUT</span>
+  <h2 class="section-title">Hello, I'm Shayshank.</h2>
+  <p class="section-subtitle">A BI &amp; Data Engineer who shipped his way into AI and mobile. Multi-disciplinary by nature, comfortable across data, AI, web, and Android.</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I grew up across India — primary school in <strong>Chennai</strong>, secondary in <strong>Pune</strong>, college and early career in <strong>Delhi</strong>, with time in <strong>Udaipur</strong> — and most recently lived a year in <strong>Dublin, Ireland</strong> completing my MSc in AI with First Class Honours (1:1).</p>
+      <p>For five years at <strong>Datafortune Software Solutions</strong>, I designed Azure Data Factory pipelines, built Snowflake / SQL Server warehouses, and shipped Power BI dashboards for international clients (US healthcare, UK NLP company, Canadian car reinsurance). I was the bridge between developers and clients — translating asks into BRDs, running standups across IST and EST, and holding 100% SLA compliance.</p>
+      <p>Then I built things in public. An <strong>AI visa-decision tracker</strong> that grew to <strong>4,300+ users</strong> with zero marketing budget. A psychrometric chart calculator for HVAC engineers. An MSc thesis on Hybrid Reinforcement Learning for diabetes care. And in the last month alone, <strong>20+ new GitHub repos</strong> shipping a 5-embassy visa-checker product suite to the web, Android, and iOS.</p>
+      <p>I write to learn — 3,820 LinkedIn followers, published articles on data, AI, and ops drawn from real life. I think the best engineers are also great communicators, and I try to be both.</p>
+    </div>
+    <div>
+      <!-- Optional: drop a casual full-length / portrait photo at assets/about-photo.jpg
+           Portrait-orientation (3:4) works best. Comment out the <img> tag below if you don't want a photo here. -->
+      <img src="assets/about-photo.jpg" alt="Shayshank Rathore" class="about-photo"
+           onerror="this.style.display='none';">
+    <div class="about-card">
+      <h3>QUICK FACTS</h3>
+      <ul>
+        <li><strong>Based</strong><span>India · Open globally</span></li>
+        <li><strong>Languages</strong><span>Hindi · English · Tamil · Marathi</span></li>
+        <li><strong>Education</strong><span>MSc AI · NCI Dublin · 1:1</span></li>
+        <li><strong>Years in BI/Data</strong><span>5+</span></li>
+        <li><strong>Play Store apps</strong><span>6+ shipped</span></li>
+        <li><strong>Public repos</strong><span>35+</span></li>
+        <li><strong>LinkedIn followers</strong><span>3,820</span></li>
+        <li><strong>Notable award</strong><span>Datafortune High Five 2023</span></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <span class="section-tag">SELECTED WORK</span>
+  <h2 class="section-title">Projects &amp; Products</h2>
+  <p class="section-subtitle">Live, shipped, used by real people. Filter by category.</p>
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="live">Live Products</button>
+    <button class="filter-btn" data-filter="android">Android Apps</button>
+    <button class="filter-btn" data-filter="ml">AI / ML</button>
+    <button class="filter-btn" data-filter="web">Web / Data</button>
+  </div>
+  <div class="projects-grid" id="projectsGrid">
+
+    <div class="project-card live" data-category="live web">
+      <span class="project-badge">🇮🇪 LIVE · 4,300+ USERS</span>
+      <h3>Irish Visa Decision Tracker</h3>
+      <p>AI-powered status checker that scrapes Irish visa decision notices, extracts processing dates with NLP, and serves real-time updates to applicants — zero advertising spend.</p>
+      <div class="project-meta">
+        <span>Python</span><span>Streamlit</span><span>Selenium</span><span>NLP</span><span>HF Spaces</span>
+      </div>
+      <a href="https://huggingface.co/spaces/SR05/Delhi_Irish_visa_decisions" target="_blank" class="project-link">Open live app →</a>
+    </div>
+
+    <div class="project-card live web" data-category="live web">
+      <span class="project-badge">🌐 LIVE · 5 EMBASSIES</span>
+      <h3>Global Ireland Visa Checker Suite</h3>
+      <p>Expanded the visa tracker into a full product suite covering New Delhi, Beijing, Abuja, Abu Dhabi, and Ankara — each with its own Streamlit web app plus a unified global checker.</p>
+      <div class="project-meta">
+        <span>Streamlit</span><span>FastAPI</span><span>Docker</span><span>Python</span>
+      </div>
+      <a href="https://github.com/shayshankr?tab=repositories" target="_blank" class="project-link">View 20+ repos →</a>
+    </div>
+
+    <div class="project-card live web" data-category="live web">
+      <span class="project-badge">🌡️ LIVE · HVAC TOOL</span>
+      <h3>Psychrometric Chart Calculator</h3>
+      <p>Web app computing 9 moist-air properties and analysing 8 psychrometric processes on an ASHRAE-style chart — built for HVAC engineers. Co-built with @atulkrohatgi.</p>
+      <div class="project-meta">
+        <span>Streamlit</span><span>psychrolib</span><span>matplotlib</span><span>Render</span>
+      </div>
+      <a href="https://psychrometric-chart-1hzt.onrender.com/" target="_blank" class="project-link">Open live app →</a>
+    </div>
+
+    <div class="project-card android" data-category="android">
+      <span class="project-badge">📱 ANDROID · FLUTTER + KOTLIN</span>
+      <h3>Irish Visa Checker (Android)</h3>
+      <p>Multi-embassy Android product suite — Flutter for cross-platform reach + Kotlin-native variants. Backed by a FastAPI service in Docker.</p>
+      <div class="project-meta">
+        <span>Flutter</span><span>Dart</span><span>Kotlin</span><span>Codemagic</span><span>Play Store</span>
+      </div>
+      <a href="https://github.com/shayshankr/ireland-visa-checker-android" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card android" data-category="android">
+      <span class="project-badge">📱 ANDROID · NATIVE KOTLIN</span>
+      <h3>Irish Visa Expected Date Estimator</h3>
+      <p>Native Kotlin Android app that predicts decision dates from VFS submission date and VAC location — lightweight on-device computation.</p>
+      <div class="project-meta">
+        <span>Kotlin</span><span>Gradle KTS</span><span>Material Design</span><span>Android</span>
+      </div>
+      <a href="https://github.com/shayshankr/irish-visa-expected-date" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card android" data-category="android">
+      <span class="project-badge">📱 ANDROID · NATIVE KOTLIN</span>
+      <h3>Psychrochart Android</h3>
+      <p>Native Android port of the web psychrometric calculator. Computes 9 moist-air properties and analyses 8 HVAC processes — fully offline.</p>
+      <div class="project-meta">
+        <span>Kotlin</span><span>Gradle KTS</span><span>Android</span><span>Offline</span>
+      </div>
+      <a href="https://github.com/shayshankr/psychrochart-android" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card ml" data-category="ml">
+      <span class="project-badge">🧠 MSc THESIS · CONTRIBUTED TO 1:1</span>
+      <h3>Hybrid RL for Personalised Diabetes Care</h3>
+      <p>Custom Gymnasium environment over UCI AIM'94 (70 patients). Reward decomposition for glycaemic control, hypoglycaemia safety, insulin cost. PPO + meta-learning.</p>
+      <div class="project-meta">
+        <span>PPO</span><span>Gymnasium</span><span>Stable-Baselines3</span><span>Meta-learning</span>
+      </div>
+      <a href="https://github.com/shayshankr/hybrid-rl-diabetes" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card ml" data-category="ml">
+      <span class="project-badge">🤖 MSc CAPSTONE · &gt;85% ACCURACY</span>
+      <h3>RAG Summarisation + BERT Sentiment</h3>
+      <p>Retrieval-Augmented Generation pipeline with custom evaluation metrics, plus a BERT-based sentiment classifier for social-media feedback at scale.</p>
+      <div class="project-meta">
+        <span>LLMs</span><span>RAG</span><span>BERT</span><span>scikit-learn</span><span>NLP</span>
+      </div>
+      <a href="https://github.com/shayshankr" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card ml" data-category="ml web">
+      <span class="project-badge">🚗 PRIVACY-FIRST ML · DPDP ACT 2023</span>
+      <h3>Automotive After-sales Risk Prediction</h3>
+      <p>Customer churn classifier (High/Medium/Low) on a 21-sheet star-schema warehouse with PII vaulting. Quantified ₹1,05,000 of annual revenue at risk in pilot.</p>
+      <div class="project-meta">
+        <span>XGBoost</span><span>SHAP</span><span>Star-schema</span><span>DPDP Act</span>
+      </div>
+      <a href="https://github.com/shayshankr/automotive_project" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="android" class="reveal" style="background: linear-gradient(135deg, #f0f9f3 0%, #ffffff 100%); max-width: none; padding: 100px 24px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <span class="section-tag" style="background: rgba(46, 125, 50, 0.1); color: var(--green);">📱 MOBILE SHIPPING</span>
+    <h2 class="section-title">Shipped 6+ Android Apps to Play Store</h2>
+    <p class="section-subtitle">Full release lifecycle — signed builds, privacy policies, Play Console submissions, multi-flavour builds, CI/CD with Codemagic.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+      <div style="background: white; padding: 24px; border-radius: var(--radius); border-left: 4px solid var(--green);">
+        <div style="font-size: 32px; font-weight: 800; color: var(--green); margin-bottom: 6px;">Flutter</div>
+        <div style="color: var(--muted); font-size: 14px;">Cross-platform for visa-checker reach across embassies</div>
+      </div>
+      <div style="background: white; padding: 24px; border-radius: var(--radius); border-left: 4px solid #FF6F00;">
+        <div style="font-size: 32px; font-weight: 800; color: #FF6F00; margin-bottom: 6px;">Kotlin</div>
+        <div style="color: var(--muted); font-size: 14px;">Native Android for performance-critical apps</div>
+      </div>
+      <div style="background: white; padding: 24px; border-radius: var(--radius); border-left: 4px solid #1976D2;">
+        <div style="font-size: 32px; font-weight: 800; color: #1976D2; margin-bottom: 6px;">FastAPI</div>
+        <div style="color: var(--muted); font-size: 14px;">Docker-backed backends powering the mobile apps</div>
+      </div>
+      <div style="background: white; padding: 24px; border-radius: var(--radius); border-left: 4px solid #8E24AA;">
+        <div style="font-size: 32px; font-weight: 800; color: #8E24AA; margin-bottom: 6px;">Codemagic</div>
+        <div style="color: var(--muted); font-size: 14px;">CI/CD pipelines for signed AAB / APK builds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey" class="reveal">
+  <span class="section-tag">CAREER JOURNEY</span>
+  <h2 class="section-title">5+ Years at Datafortune, then Ireland</h2>
+  <p class="section-subtitle">From OPS BI Developer to BI Team Lead, through cloud migrations, NLP clients, and Microsoft Fabric — then a year in Dublin completing MSc AI with First Class Honours.</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="date">Sep 2024 – Apr 2026 · Dublin, Ireland</div>
+      <h3>MSc AI Candidate + International Experience</h3>
+      <p>Full-time MSc AI at NCI Dublin (First Class Honours / 1:1) while working part-time as Retail Assistant at Primark and Kitchen Porter. Founded a 1,000+ member WhatsApp community for Indian students.</p>
+      <div><span class="timeline-tech">MSc AI</span><span class="timeline-tech">PPO</span><span class="timeline-tech">RAG</span><span class="timeline-tech">BERT</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Sep 2022 – Jan 2024 · Datafortune</div>
+      <h3>Software Engineer + OPS Lead — Insurance + USA/Canada Reinsurance</h3>
+      <p>OPS lead for Indian customer + USA/Canada reinsurance. Introduced GenAI tooling and Microsoft Fabric workflows. Won the Datafortune High Five Award (2023) for zero-downtime cloud migration.</p>
+      <div><span class="timeline-tech">ADF</span><span class="timeline-tech">Microsoft Fabric</span><span class="timeline-tech">GenAI</span><span class="timeline-tech">Snowflake</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Jul 2021 – Aug 2022 · Datafortune</div>
+      <h3>Software Engineer — UK NLP Client</h3>
+      <p>Engineering for a UK-based NLP company — full cloud-stack rebuild including Looker, Snowflake, IICS, Power BI, and Azure Data Factory.</p>
+      <div><span class="timeline-tech">Looker</span><span class="timeline-tech">Snowflake</span><span class="timeline-tech">IICS</span><span class="timeline-tech">Power BI</span><span class="timeline-tech">ADF</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Feb 2020 – Mar 2021 · Datafortune</div>
+      <h3>BI Developer — Project Management &amp; Migration</h3>
+      <p>Project tracking and platform migration tooling for internal teams.</p>
+      <div><span class="timeline-tech">JIRA</span><span class="timeline-tech">Confluence</span><span class="timeline-tech">SSIS</span><span class="timeline-tech">SSRS</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Aug 2018 – Jan 2020 · Datafortune</div>
+      <h3>BI Developer — OPS / USA &amp; Canada Reinsurance</h3>
+      <p>End-to-end BI reporting platform for car reinsurance clients. 99.9% system uptime.</p>
+      <div><span class="timeline-tech">SSIS</span><span class="timeline-tech">SSRS</span><span class="timeline-tech">SSAS</span><span class="timeline-tech">Salesforce</span><span class="timeline-tech">TFS</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <span class="section-tag">TOOLKIT</span>
+  <h2 class="section-title">Skills &amp; Stack</h2>
+  <p class="section-subtitle">Hover or tap a tag to see what I lean into most.</p>
+  <div class="skill-cloud">
+    <span class="skill-tag hot">Python</span>
+    <span class="skill-tag hot">Azure Data Factory</span>
+    <span class="skill-tag hot">Snowflake</span>
+    <span class="skill-tag hot">Power BI</span>
+    <span class="skill-tag hot">Flutter</span>
+    <span class="skill-tag hot">Kotlin</span>
+    <span class="skill-tag">SQL Server</span>
+    <span class="skill-tag">SSIS</span>
+    <span class="skill-tag">SSRS</span>
+    <span class="skill-tag">SSAS</span>
+    <span class="skill-tag">DAX</span>
+    <span class="skill-tag">T-SQL</span>
+    <span class="skill-tag">PostgreSQL</span>
+    <span class="skill-tag">Streamlit</span>
+    <span class="skill-tag">Flask</span>
+    <span class="skill-tag">FastAPI</span>
+    <span class="skill-tag">Docker</span>
+    <span class="skill-tag">scikit-learn</span>
+    <span class="skill-tag">XGBoost</span>
+    <span class="skill-tag">SHAP</span>
+    <span class="skill-tag">TensorFlow</span>
+    <span class="skill-tag">BERT</span>
+    <span class="skill-tag">NLP</span>
+    <span class="skill-tag">RAG</span>
+    <span class="skill-tag">LangChain</span>
+    <span class="skill-tag">Reinforcement Learning</span>
+    <span class="skill-tag">Gymnasium</span>
+    <span class="skill-tag">PPO</span>
+    <span class="skill-tag">Stable-Baselines3</span>
+    <span class="skill-tag">Dart</span>
+    <span class="skill-tag">Android SDK</span>
+    <span class="skill-tag">Codemagic CI</span>
+    <span class="skill-tag">Google Play Console</span>
+    <span class="skill-tag">Selenium</span>
+    <span class="skill-tag">BeautifulSoup</span>
+    <span class="skill-tag">Microsoft Fabric</span>
+    <span class="skill-tag">Microsoft Azure</span>
+    <span class="skill-tag">AWS S3</span>
+    <span class="skill-tag">Hugging Face Spaces</span>
+    <span class="skill-tag">Render</span>
+    <span class="skill-tag">Git / GitHub</span>
+    <span class="skill-tag">Jira</span>
+    <span class="skill-tag">Confluence</span>
+    <span class="skill-tag">IICS</span>
+    <span class="skill-tag">Looker</span>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <span class="section-tag" style="background: rgba(232, 179, 57, 0.15); color: var(--gold);">GET IN TOUCH</span>
+    <h2>Let's build <span>something together.</span></h2>
+    <p>Open to opportunities — Android, AI/ML, Data Engineering, BI Development, AI Product roles. Based in India, available globally.</p>
+    <div class="contact-grid">
+      <a href="mailto:shayshankrathore05@gmail.com" class="contact-link primary">📧 shayshankrathore05@gmail.com</a>
+      <a href="https://www.linkedin.com/in/shayshank-rathore/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/shayshankr" target="_blank" class="contact-link">GitHub</a>
+      <a href="https://huggingface.co/SR05" target="_blank" class="contact-link">HF: SR05</a>
+      <a href="https://huggingface.co/shayshankrathore" target="_blank" class="contact-link">HF: shayshankrathore</a>
+      <a href="https://www.youtube.com/@2hayshankRathore" target="_blank" class="contact-link">YouTube</a>
+      <a href="https://g.dev/shayshankr" target="_blank" class="contact-link">Google Developer</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with HTML · CSS · vanilla JS · ☕ · Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+  <p style="margin-top: 6px;">© 2026 Shayshank Rathore</p>
+</footer>
+
+<script>
+  // theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme') || 'light';
+  root.setAttribute('data-theme', saved);
+  themeToggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+
+  // mobile menu
+  document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // project filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cats = (card.dataset.category || '').split(' ');
+        card.classList.toggle('hidden', f !== 'all' && !cats.includes(f));
+      });
+    });
+  });
+
+  // scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
