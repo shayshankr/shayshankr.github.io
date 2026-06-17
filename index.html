@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Shayshank Rathore — BI Developer, Data Engineer, MSc AI (First Class Honours, NCI Dublin), AI Product Builder, and Android Developer with 6+ apps on Google Play Store.">
-<title>Shayshank Rathore - BI · Data · AI · Android Developer</title>
+<meta name="description" content="Shayshank Rathore — AI Product Builder · Forward-Deployed Engineer · MSc AI (First Class Honours, NCI Dublin). 35+ shipped repos · 6+ Android apps on Play Store · 4,300+ users on live AI tool.">
+<title>Shayshank Rathore — AI Product Builder · Forward-Deployed Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0b2545;
-    --primary: #1f4e79;
+    --primary: #0f766e;        /* teal — AI-startup feel */
+    --primary-deep: #115e59;
     --gold: #e8b339;
     --green: #2e7d32;
     --bg: #f7f9fc;
@@ -76,7 +77,7 @@
   /* HERO */
   .hero {
     min-height: 100vh; padding: 120px 24px 80px;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--primary) 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--primary-deep) 100%);
     color: white; position: relative; overflow: hidden;
     display: flex; align-items: center;
   }
@@ -125,6 +126,7 @@
     .hero-photo { order: -1; }
     .hero-photo img, .hero-photo-fallback { max-width: 220px; }
   }
+
   .hero-badge {
     display: inline-block; padding: 8px 16px; border-radius: 999px;
     background: rgba(232, 179, 57, 0.15); color: var(--gold);
@@ -133,7 +135,7 @@
     animation: fadeInUp 0.6s ease-out;
   }
   .hero h1 {
-    font-size: clamp(40px, 7vw, 80px); font-weight: 900;
+    font-size: clamp(40px, 7vw, 72px); font-weight: 900;
     line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px;
     animation: fadeInUp 0.8s ease-out;
   }
@@ -158,12 +160,12 @@
   .btn-ghost { background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.2); }
   .btn-ghost:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-2px); }
   .hero-stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 28px; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 28px; margin-top: 50px; padding-top: 36px; border-top: 1px solid rgba(255, 255, 255, 0.15);
     animation: fadeInUp 1.4s ease-out;
   }
-  .stat-num { font-size: 36px; font-weight: 800; color: var(--gold); margin-bottom: 4px; }
-  .stat-label { font-size: 13px; color: rgba(255, 255, 255, 0.7); }
+  .stat-num { font-size: 34px; font-weight: 800; color: var(--gold); margin-bottom: 4px; }
+  .stat-label { font-size: 12px; color: rgba(255, 255, 255, 0.7); }
 
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -180,17 +182,45 @@
   .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; }
   .section-subtitle { font-size: 17px; color: var(--muted); max-width: 700px; margin-bottom: 50px; }
 
+  /* HOW I WORK — AI-NATIVE SECTION */
+  .ai-native-section {
+    background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+    max-width: none; padding: 100px 24px;
+  }
+  [data-theme="dark"] .ai-native-section {
+    background: linear-gradient(135deg, #122339 0%, #0f1f33 100%);
+  }
+  .ai-native-inner { max-width: 1200px; margin: 0 auto; }
+  .ai-tools-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; margin-top: 40px;
+  }
+  .ai-tool-card {
+    background: var(--card); padding: 24px; border-radius: var(--radius);
+    border-left: 4px solid var(--primary); box-shadow: var(--shadow);
+    transition: transform 0.3s;
+  }
+  .ai-tool-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+  .ai-tool-name { font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+  .ai-tool-desc { color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .ai-native-quote {
+    background: var(--card); padding: 32px; border-radius: var(--radius);
+    border-left: 5px solid var(--gold); margin-top: 40px;
+    box-shadow: var(--shadow); font-size: 18px; font-style: italic; color: var(--text);
+  }
+  .ai-native-quote strong { color: var(--primary); font-style: normal; }
+
   /* ABOUT */
   .about-grid {
     display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start;
   }
+  .about-text p { margin-bottom: 18px; font-size: 16px; }
   .about-photo {
     width: 100%; aspect-ratio: 3/4; object-fit: cover;
     border-radius: var(--radius); box-shadow: var(--shadow);
     margin-bottom: 24px; transition: transform 0.3s;
   }
   .about-photo:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
-  .about-text p { margin-bottom: 18px; font-size: 16px; }
   .about-card {
     background: var(--card); border-radius: var(--radius); padding: 28px;
     box-shadow: var(--shadow);
@@ -206,9 +236,7 @@
   .about-card li span { color: var(--muted); font-size: 13px; }
 
   /* PROJECT FILTERS */
-  .filters {
-    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;
-  }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
   .filter-btn {
     padding: 8px 18px; border-radius: 999px; border: 1px solid var(--soft);
     background: transparent; color: var(--muted); cursor: pointer; font-size: 13px;
@@ -266,16 +294,18 @@
   .timeline-tech { display: inline-block; font-size: 11px; padding: 3px 8px; background: var(--soft); border-radius: 4px; margin: 6px 4px 0 0; color: var(--text); font-weight: 500; }
 
   /* SKILLS */
-  .skill-cloud {
-    display: flex; flex-wrap: wrap; gap: 10px; max-width: 900px;
-  }
+  .skill-cloud { display: flex; flex-wrap: wrap; gap: 10px; max-width: 900px; }
   .skill-tag {
     padding: 8px 16px; background: var(--card); border-radius: 999px;
     font-size: 13px; font-weight: 500; box-shadow: var(--shadow);
     transition: all 0.2s; border: 1px solid var(--soft);
   }
   .skill-tag:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--primary); }
-  .skill-tag.hot { background: linear-gradient(135deg, var(--gold), #f4d56a); color: var(--navy); border: none; font-weight: 700; }
+  .skill-tag.hot {
+    background: linear-gradient(135deg, var(--gold), #f4d56a);
+    color: var(--navy); border: none; font-weight: 700;
+  }
+  .skill-tag.muted { opacity: 0.6; font-size: 12px; padding: 6px 12px; }
 
   /* CONTACT */
   .contact-section {
@@ -298,11 +328,9 @@
   footer { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; background: var(--navy); }
   footer a { color: var(--gold); text-decoration: none; }
 
-  /* SCROLL ANIMATIONS */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* MOBILE */
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .nav-links.open {
@@ -319,12 +347,12 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#top" class="logo">Shayshank Rathore<span>.</span></a>
+    <a href="#top" class="logo">Shayshank<span>.</span></a>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
+      <a href="#how-i-work">How I Work</a>
       <a href="#projects">Projects</a>
       <a href="#android">Android</a>
-      <a href="#journey">Journey</a>
+      <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
@@ -337,26 +365,23 @@
   <div class="hero-inner">
     <div class="hero-text">
       <span class="hero-badge">🟢 OPEN TO OPPORTUNITIES · GLOBALLY AVAILABLE</span>
-      <h1>I build <span class="highlight">products</span><br>that real people use.</h1>
+      <h1>I ship <span class="highlight">AI products</span><br>that real people use.</h1>
       <p class="hero-tagline">
-        MSc Artificial Intelligence (First Class Honours, NCI Dublin) · BI &amp; Data Engineer with 5+ years at Datafortune · AI Product Builder · Mobile Developer with 6+ apps shipped to Google Play Store.
+        <b>AI Product Builder</b> · <b>Forward-Deployed Engineer</b> · <b>Shipper</b><br>
+        MSc Artificial Intelligence (First Class Honours, NCI Dublin · 1:1). 35+ repos · 6+ Play Store apps · 4,300+ users in 14 months, using AI as my pair programmer.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View My Work →</a>
+        <a href="#projects" class="btn btn-primary">See What I've Shipped →</a>
         <a href="#contact" class="btn btn-ghost">Get In Touch</a>
       </div>
       <div class="hero-stats">
-        <div><div class="stat-num">4,300+</div><div class="stat-label">Users on shipped AI tools</div></div>
-        <div><div class="stat-num">6+</div><div class="stat-label">Android apps on Play Store</div></div>
         <div><div class="stat-num">35+</div><div class="stat-label">Public GitHub repos</div></div>
+        <div><div class="stat-num">6+</div><div class="stat-label">Android apps on Play Store</div></div>
+        <div><div class="stat-num">4,300+</div><div class="stat-label">Users on live AI tool</div></div>
         <div><div class="stat-num">1:1</div><div class="stat-label">First Class Honours, MSc AI</div></div>
-        <div><div class="stat-num">1,000+</div><div class="stat-label">Student community founded</div></div>
       </div>
     </div>
     <div class="hero-photo">
-      <!-- Drop your professional headshot at assets/headshot.jpg
-           Square (1:1) photos look best — 800x800 or larger.
-           If the image is missing, a stylish "SR" placeholder will show automatically. -->
       <img src="assets/headshot.jpg" alt="Shayshank Rathore"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="hero-photo-fallback" style="display:none;">SR</div>
@@ -364,43 +389,45 @@
   </div>
 </header>
 
-<section id="about" class="reveal">
-  <span class="section-tag">ABOUT</span>
-  <h2 class="section-title">Hello, I'm Shayshank Rathore </h2>
-  <p class="section-subtitle">A BI &amp; Data Engineer who shipped his way into AI and mobile. Multi-disciplinary by nature, comfortable across data, AI, web, and Android.</p>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I grew up across India — primary school in <strong>Chennai</strong>, secondary in <strong>Pune</strong>, college and early career in <strong>Delhi</strong>, with time in <strong>Udaipur</strong> — and most recently lived a year in <strong>Dublin, Ireland</strong> completing my MSc in AI with First Class Honours (1:1).</p>
-      <p>For five years at <strong>Datafortune Software Solutions</strong>, I designed Azure Data Factory pipelines, built Snowflake / SQL Server warehouses, and shipped Power BI dashboards for international clients (US healthcare, UK NLP company, Canadian car reinsurance). I was the bridge between developers and clients — translating asks into BRDs, running standups across IST and EST, and holding 100% SLA compliance.</p>
-      <p>Then I built things in public. An <strong>AI visa-decision tracker</strong> that grew to <strong>4,300+ users</strong> with zero marketing budget. A psychrometric chart calculator for HVAC engineers. An MSc thesis on Hybrid Reinforcement Learning for diabetes care. And in the last month alone, <strong>20+ new GitHub repos</strong> shipping a 5-embassy visa-checker product suite to the web, Android, and iOS.</p>
-      <p>I write to learn — 3,820 LinkedIn followers, published articles on data, AI, and ops drawn from real life. I think the best engineers are also great communicators, and I try to be both.</p>
+<!-- HOW I WORK — AI-NATIVE -->
+<section class="ai-native-section reveal" id="how-i-work">
+  <div class="ai-native-inner">
+    <span class="section-tag">HOW I WORK</span>
+    <h2 class="section-title">AI-Native Development.</h2>
+    <p class="section-subtitle">I treat Claude, Cursor, and GitHub Copilot as pair programmers. My value isn't typing every line by hand — it's knowing what to build, designing it clearly, and shipping working products fast. This is how I produce more in a week than most teams ship in a quarter.</p>
+    <div class="ai-tools-grid">
+      <div class="ai-tool-card">
+        <div class="ai-tool-name">Claude · Claude Code</div>
+        <div class="ai-tool-desc">Architecture decisions · complex refactors · writing tests · debugging tricky bugs · system design conversations.</div>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-name">Cursor</div>
+        <div class="ai-tool-desc">Daily driver — multi-file edits, fast prototyping, agentic codebase navigation.</div>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-name">GitHub Copilot</div>
+        <div class="ai-tool-desc">Inline suggestions, boilerplate completion, pattern fills inside the editor.</div>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-name">v0 · Bolt · Lovable</div>
+        <div class="ai-tool-desc">UI scaffolding for landing pages, demos, and prototyping client-facing surfaces.</div>
+      </div>
+      <div class="ai-tool-card" style="border-left-color: var(--gold);">
+        <div class="ai-tool-name" style="color: #a87c1d;">My brain</div>
+        <div class="ai-tool-desc">Product decisions · system design · prompt engineering · communication · knowing what to build and why.</div>
+      </div>
     </div>
-    <div>
-      <!-- Optional: drop a casual full-length / portrait photo at assets/about-photo.jpg
-           Portrait-orientation (3:4) works best. Comment out the <img> tag below if you don't want a photo here. -->
-      <img src="assets/about-photo.jpg" alt="Shayshank Rathore" class="about-photo"
-           onerror="this.style.display='none';">
-    <div class="about-card">
-      <h3>QUICK FACTS</h3>
-      <ul>
-        <li><strong>Based</strong><span>India · Open globally</span></li>
-        <li><strong>Languages</strong><span>Hindi · English · Tamil · Marathi</span></li>
-        <li><strong>Education</strong><span>MSc AI · NCI Dublin · 1:1</span></li>
-        <li><strong>Years in BI/Data</strong><span>5+</span></li>
-        <li><strong>Play Store apps</strong><span>6+ shipped</span></li>
-        <li><strong>Public repos</strong><span>35+</span></li>
-        <li><strong>LinkedIn followers</strong><span>3,820</span></li>
-        <li><strong>Notable award</strong><span>Datafortune High Five 2023</span></li>
-      </ul>
-    </div>
+    <div class="ai-native-quote">
+      I ship in <strong>3-day cycles instead of 3-week sprints</strong>. This isn't a workaround — it's the new development model that AI companies (Cursor, Anthropic, OpenAI, LangChain) are actively hiring for.
     </div>
   </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects" class="reveal">
   <span class="section-tag">SELECTED WORK</span>
-  <h2 class="section-title">Projects &amp; Products</h2>
-  <p class="section-subtitle">Live, shipped, used by real people. Filter by category.</p>
+  <h2 class="section-title">Shipped Products</h2>
+  <p class="section-subtitle">Live, deployed, used by real people. Filter by category.</p>
   <div class="filters" id="filters">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="live">Live Products</button>
@@ -423,9 +450,9 @@
     <div class="project-card live web" data-category="live web">
       <span class="project-badge">🌐 LIVE · 5 EMBASSIES</span>
       <h3>Global Ireland Visa Checker Suite</h3>
-      <p>Expanded the visa tracker into a full product suite covering New Delhi, Beijing, Abuja, Abu Dhabi, and Ankara — each with its own Streamlit web app plus a unified global checker.</p>
+      <p>Expanded the visa tracker into a 5-embassy product family — New Delhi, Beijing, Abuja, Abu Dhabi, Ankara. Web + Flutter Android + iOS + Kotlin-native + FastAPI backend. 20+ repos shipped in May 2026.</p>
       <div class="project-meta">
-        <span>Streamlit</span><span>FastAPI</span><span>Docker</span><span>Python</span>
+        <span>Streamlit</span><span>Flutter</span><span>FastAPI</span><span>Docker</span><span>Python</span>
       </div>
       <a href="https://github.com/shayshankr?tab=repositories" target="_blank" class="project-link">View 20+ repos →</a>
     </div>
@@ -433,7 +460,7 @@
     <div class="project-card live web" data-category="live web">
       <span class="project-badge">🌡️ LIVE · HVAC TOOL</span>
       <h3>Psychrometric Chart Calculator</h3>
-      <p>Web app computing 9 moist-air properties and analysing 8 psychrometric processes on an ASHRAE-style chart — built for HVAC engineers. Co-built with @atulkrohatgi.</p>
+      <p>Web app computing 9 moist-air properties and analysing 8 psychrometric processes on an ASHRAE-style chart — for HVAC engineers. Co-built with @atulkrohatgi.</p>
       <div class="project-meta">
         <span>Streamlit</span><span>psychrolib</span><span>matplotlib</span><span>Render</span>
       </div>
@@ -442,8 +469,8 @@
 
     <div class="project-card android" data-category="android">
       <span class="project-badge">📱 ANDROID · FLUTTER + KOTLIN</span>
-      <h3>Irish Visa Checker (Android)</h3>
-      <p>Multi-embassy Android product suite — Flutter for cross-platform reach + Kotlin-native variants. Backed by a FastAPI service in Docker.</p>
+      <h3>Irish Visa Checker (Android Suite)</h3>
+      <p>Multi-embassy Android product suite — Flutter for cross-platform + Kotlin-native variants. Backed by FastAPI in Docker. Codemagic CI/CD for signed Play Store releases.</p>
       <div class="project-meta">
         <span>Flutter</span><span>Dart</span><span>Kotlin</span><span>Codemagic</span><span>Play Store</span>
       </div>
@@ -455,7 +482,7 @@
       <h3>Irish Visa Expected Date Estimator</h3>
       <p>Native Kotlin Android app that predicts decision dates from VFS submission date and VAC location — lightweight on-device computation.</p>
       <div class="project-meta">
-        <span>Kotlin</span><span>Gradle KTS</span><span>Material Design</span><span>Android</span>
+        <span>Kotlin</span><span>Gradle KTS</span><span>Material Design</span>
       </div>
       <a href="https://github.com/shayshankr/irish-visa-expected-date" target="_blank" class="project-link">View on GitHub →</a>
     </div>
@@ -463,9 +490,9 @@
     <div class="project-card android" data-category="android">
       <span class="project-badge">📱 ANDROID · NATIVE KOTLIN</span>
       <h3>Psychrochart Android</h3>
-      <p>Native Android port of the web psychrometric calculator. Computes 9 moist-air properties and analyses 8 HVAC processes — fully offline.</p>
+      <p>Native Android port of the web psychrometric calculator. 9 moist-air properties + 8 HVAC processes — fully offline.</p>
       <div class="project-meta">
-        <span>Kotlin</span><span>Gradle KTS</span><span>Android</span><span>Offline</span>
+        <span>Kotlin</span><span>Gradle KTS</span><span>Android</span>
       </div>
       <a href="https://github.com/shayshankr/psychrochart-android" target="_blank" class="project-link">View on GitHub →</a>
     </div>
@@ -473,7 +500,7 @@
     <div class="project-card ml" data-category="ml">
       <span class="project-badge">🧠 MSc THESIS · CONTRIBUTED TO 1:1</span>
       <h3>Hybrid RL for Personalised Diabetes Care</h3>
-      <p>Custom Gymnasium environment over UCI AIM'94 (70 patients). Reward decomposition for glycaemic control, hypoglycaemia safety, insulin cost. PPO + meta-learning.</p>
+      <p>Custom Gymnasium environment over UCI AIM'94 (70 patients). Reward decomposition with safety guardrails (hypoglycaemia floor) baked into reward signal. PPO + meta-learning.</p>
       <div class="project-meta">
         <span>PPO</span><span>Gymnasium</span><span>Stable-Baselines3</span><span>Meta-learning</span>
       </div>
@@ -481,11 +508,11 @@
     </div>
 
     <div class="project-card ml" data-category="ml">
-      <span class="project-badge">🤖 MSc CAPSTONE · &gt;85% ACCURACY</span>
+      <span class="project-badge">🤖 MSc CAPSTONE · RAG + BERT</span>
       <h3>RAG Summarisation + BERT Sentiment</h3>
-      <p>Retrieval-Augmented Generation pipeline with custom evaluation metrics, plus a BERT-based sentiment classifier for social-media feedback at scale.</p>
+      <p>RAG pipeline with custom relevance + factual-accuracy guardrails (an early form of LLM output safety). Plus a BERT sentiment classifier reaching >85% accuracy.</p>
       <div class="project-meta">
-        <span>LLMs</span><span>RAG</span><span>BERT</span><span>scikit-learn</span><span>NLP</span>
+        <span>LLMs</span><span>RAG</span><span>BERT</span><span>LangChain</span><span>NLP</span>
       </div>
       <a href="https://github.com/shayshankr" target="_blank" class="project-link">View on GitHub →</a>
     </div>
@@ -493,7 +520,7 @@
     <div class="project-card ml" data-category="ml web">
       <span class="project-badge">🚗 PRIVACY-FIRST ML · DPDP ACT 2023</span>
       <h3>Automotive After-sales Risk Prediction</h3>
-      <p>Customer churn classifier (High/Medium/Low) on a 21-sheet star-schema warehouse with PII vaulting. Quantified ₹1,05,000 of annual revenue at risk in pilot.</p>
+      <p>Customer churn classifier on a 21-sheet star-schema warehouse with PII vaulting + tokenisation. Quantified ₹1,05,000 of annual revenue at risk in pilot.</p>
       <div class="project-meta">
         <span>XGBoost</span><span>SHAP</span><span>Star-schema</span><span>DPDP Act</span>
       </div>
@@ -503,11 +530,12 @@
   </div>
 </section>
 
+<!-- ANDROID FOCUS -->
 <section id="android" class="reveal" style="background: linear-gradient(135deg, #f0f9f3 0%, #ffffff 100%); max-width: none; padding: 100px 24px;">
   <div style="max-width: 1200px; margin: 0 auto;">
     <span class="section-tag" style="background: rgba(46, 125, 50, 0.1); color: var(--green);">📱 MOBILE SHIPPING</span>
     <h2 class="section-title">Shipped 6+ Android Apps to Play Store</h2>
-    <p class="section-subtitle">Full release lifecycle — signed builds, privacy policies, Play Console submissions, multi-flavour builds, CI/CD with Codemagic.</p>
+    <p class="section-subtitle">Full release lifecycle — signed builds, privacy policies, Play Console submissions, multi-flavour builds, CI/CD with Codemagic. Cross-platform with Flutter and native with Kotlin.</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
       <div style="background: white; padding: 24px; border-radius: var(--radius); border-left: 4px solid var(--green);">
         <div style="font-size: 32px; font-weight: 800; color: var(--green); margin-bottom: 6px;">Flutter</div>
@@ -529,102 +557,101 @@
   </div>
 </section>
 
-<section id="journey" class="reveal">
-  <span class="section-tag">CAREER JOURNEY</span>
-  <h2 class="section-title">5+ Years at Datafortune, then Ireland</h2>
-  <p class="section-subtitle">From OPS BI Developer to BI Team Lead, through cloud migrations, NLP clients, and Microsoft Fabric — then a year in Dublin completing MSc AI with First Class Honours.</p>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="date">Sep 2024 – Apr 2026 · Dublin, Ireland</div>
-      <h3>MSc AI Candidate + International Experience</h3>
-      <p>Full-time MSc AI at NCI Dublin (First Class Honours / 1:1) while working part-time as Retail Assistant at Primark and Kitchen Porter. Founded a 1,000+ member WhatsApp community for Indian students.</p>
-      <div><span class="timeline-tech">MSc AI</span><span class="timeline-tech">PPO</span><span class="timeline-tech">RAG</span><span class="timeline-tech">BERT</span></div>
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <span class="section-tag">ABOUT</span>
+  <h2 class="section-title">Hello, I'm Shayshank.</h2>
+  <p class="section-subtitle">An AI-native builder who ships fast. Comfortable across product, AI, web, and Android.</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I grew up across India — primary school in <strong>Chennai</strong>, secondary in <strong>Pune</strong>, college and early career in <strong>Delhi</strong>, with time in <strong>Udaipur</strong> — and most recently lived a year in <strong>Dublin, Ireland</strong> completing my MSc in AI with <strong>First Class Honours (1:1)</strong>.</p>
+      <p>In the last 14 months I shipped <strong>35+ public repos, 6+ Android apps to Google Play Store, and a live AI tool used by 4,300+ people</strong> — all while doing a full-time MSc, working part-time at Primark, kitchen porter shifts, and founding a 1,000+ member student community. My superpower isn't a single technical skill — it's <strong>compressing dev cycles to days using AI as a pair programmer</strong>.</p>
+      <p>Before the MSc, <strong>5+ years at Datafortune Software Solutions</strong> as BI Team Lead. I coordinated US/EU clients, led delivery, and introduced Microsoft Fabric and Generative AI tooling in the final phase. The skills I built there — bridging engineers and clients, owning end-to-end delivery — are exactly what Forward-Deployed Engineer and Solutions roles need.</p>
+      <p>I write to learn — <strong>3,820 LinkedIn followers</strong>, published technical articles on data, AI, and operations drawn from real life. I think the best engineers are also great communicators, and I try to be both.</p>
     </div>
-    <div class="timeline-item">
-      <div class="date">Sep 2022 – Jan 2024 · Datafortune</div>
-      <h3>Software Engineer + OPS Lead — Insurance + USA/Canada Reinsurance</h3>
-      <p>OPS lead for Indian customer + USA/Canada reinsurance. Introduced GenAI tooling and Microsoft Fabric workflows. Won the Datafortune High Five Award (2023) for zero-downtime cloud migration.</p>
-      <div><span class="timeline-tech">ADF</span><span class="timeline-tech">Microsoft Fabric</span><span class="timeline-tech">GenAI</span><span class="timeline-tech">Snowflake</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="date">Jul 2021 – Aug 2022 · Datafortune</div>
-      <h3>Software Engineer — UK NLP Client</h3>
-      <p>Engineering for a UK-based NLP company — full cloud-stack rebuild including Looker, Snowflake, IICS, Power BI, and Azure Data Factory.</p>
-      <div><span class="timeline-tech">Looker</span><span class="timeline-tech">Snowflake</span><span class="timeline-tech">IICS</span><span class="timeline-tech">Power BI</span><span class="timeline-tech">ADF</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="date">Feb 2020 – Mar 2021 · Datafortune</div>
-      <h3>BI Developer — Project Management &amp; Migration</h3>
-      <p>Project tracking and platform migration tooling for internal teams.</p>
-      <div><span class="timeline-tech">JIRA</span><span class="timeline-tech">Confluence</span><span class="timeline-tech">SSIS</span><span class="timeline-tech">SSRS</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="date">Aug 2018 – Jan 2020 · Datafortune</div>
-      <h3>BI Developer — OPS / USA &amp; Canada Reinsurance</h3>
-      <p>End-to-end BI reporting platform for car reinsurance clients. 99.9% system uptime.</p>
-      <div><span class="timeline-tech">SSIS</span><span class="timeline-tech">SSRS</span><span class="timeline-tech">SSAS</span><span class="timeline-tech">Salesforce</span><span class="timeline-tech">TFS</span></div>
+    <div>
+      <img src="assets/about-photo.jpg" alt="Shayshank Rathore" class="about-photo"
+           onerror="this.style.display='none';">
+      <div class="about-card">
+        <h3>QUICK FACTS</h3>
+        <ul>
+          <li><strong>Based</strong><span>India · Open globally</span></li>
+          <li><strong>Languages</strong><span>Hindi · English · Tamil · Marathi</span></li>
+          <li><strong>Education</strong><span>MSc AI · NCI Dublin · 1:1</span></li>
+          <li><strong>Shipped (last 14mo)</strong><span>35+ repos</span></li>
+          <li><strong>Play Store apps</strong><span>6+</span></li>
+          <li><strong>Live users</strong><span>4,300+</span></li>
+          <li><strong>LinkedIn followers</strong><span>3,820</span></li>
+          <li><strong>Notable award</strong><span>Datafortune High Five 2023</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- SKILLS — re-prioritized -->
 <section id="skills" class="reveal">
   <span class="section-tag">TOOLKIT</span>
   <h2 class="section-title">Skills &amp; Stack</h2>
-  <p class="section-subtitle">Hover or tap a tag to see what I lean into most.</p>
+  <p class="section-subtitle">Gold tags are what I lean into most. Smaller tags are concept-level / AI-assisted.</p>
   <div class="skill-cloud">
+    <!-- HOT — what I lead with -->
+    <span class="skill-tag hot">Claude</span>
+    <span class="skill-tag hot">Cursor</span>
     <span class="skill-tag hot">Python</span>
-    <span class="skill-tag hot">Azure Data Factory</span>
-    <span class="skill-tag hot">Snowflake</span>
-    <span class="skill-tag hot">Power BI</span>
+    <span class="skill-tag hot">RAG</span>
+    <span class="skill-tag hot">LangChain</span>
     <span class="skill-tag hot">Flutter</span>
     <span class="skill-tag hot">Kotlin</span>
-    <span class="skill-tag">SQL Server</span>
-    <span class="skill-tag">SSIS</span>
-    <span class="skill-tag">SSRS</span>
-    <span class="skill-tag">SSAS</span>
-    <span class="skill-tag">DAX</span>
-    <span class="skill-tag">T-SQL</span>
-    <span class="skill-tag">PostgreSQL</span>
+    <span class="skill-tag hot">FastAPI</span>
+
+    <!-- Strong, regular -->
+    <span class="skill-tag">GitHub Copilot</span>
+    <span class="skill-tag">LLM Prompt Engineering</span>
     <span class="skill-tag">Streamlit</span>
-    <span class="skill-tag">Flask</span>
-    <span class="skill-tag">FastAPI</span>
+    <span class="skill-tag">Hugging Face Spaces</span>
+    <span class="skill-tag">Android (Play Store)</span>
+    <span class="skill-tag">Codemagic CI</span>
     <span class="skill-tag">Docker</span>
+    <span class="skill-tag">Selenium</span>
+    <span class="skill-tag">BeautifulSoup</span>
     <span class="skill-tag">scikit-learn</span>
     <span class="skill-tag">XGBoost</span>
     <span class="skill-tag">SHAP</span>
-    <span class="skill-tag">TensorFlow</span>
     <span class="skill-tag">BERT</span>
     <span class="skill-tag">NLP</span>
-    <span class="skill-tag">RAG</span>
-    <span class="skill-tag">LangChain</span>
-    <span class="skill-tag">Reinforcement Learning</span>
-    <span class="skill-tag">Gymnasium</span>
-    <span class="skill-tag">PPO</span>
+    <span class="skill-tag">PPO / RL</span>
     <span class="skill-tag">Stable-Baselines3</span>
-    <span class="skill-tag">Dart</span>
-    <span class="skill-tag">Android SDK</span>
-    <span class="skill-tag">Codemagic CI</span>
-    <span class="skill-tag">Google Play Console</span>
-    <span class="skill-tag">Selenium</span>
-    <span class="skill-tag">BeautifulSoup</span>
+    <span class="skill-tag">Gymnasium</span>
+    <span class="skill-tag">Flask</span>
+    <span class="skill-tag">REST APIs</span>
+    <span class="skill-tag">Git / GitHub</span>
+    <span class="skill-tag">Render</span>
     <span class="skill-tag">Microsoft Fabric</span>
     <span class="skill-tag">Microsoft Azure</span>
     <span class="skill-tag">AWS S3</span>
-    <span class="skill-tag">Hugging Face Spaces</span>
-    <span class="skill-tag">Render</span>
-    <span class="skill-tag">Git / GitHub</span>
-    <span class="skill-tag">Jira</span>
-    <span class="skill-tag">Confluence</span>
-    <span class="skill-tag">IICS</span>
-    <span class="skill-tag">Looker</span>
+    <span class="skill-tag">Hugging Face</span>
+    <span class="skill-tag">Pandas</span>
+    <span class="skill-tag">NumPy</span>
+
+    <!-- Concept-level / AI-assisted -->
+    <span class="skill-tag muted">SQL Server (concept)</span>
+    <span class="skill-tag muted">Snowflake (concept)</span>
+    <span class="skill-tag muted">Azure Data Factory (concept)</span>
+    <span class="skill-tag muted">Power BI (concept)</span>
+    <span class="skill-tag muted">PostgreSQL (concept)</span>
+    <span class="skill-tag muted">SSIS / SSRS / IICS (concept)</span>
+    <span class="skill-tag muted">TensorFlow (concept)</span>
+    <span class="skill-tag muted">Looker (concept)</span>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <span class="section-tag" style="background: rgba(232, 179, 57, 0.15); color: var(--gold);">GET IN TOUCH</span>
     <h2>Let's build <span>something together.</span></h2>
-    <p>Open to opportunities — Android, AI/ML, Data Engineering, BI Development, AI Product roles. Based in India, available globally.</p>
+    <p>Open to <b>Forward-Deployed Engineer · AI Solutions · AI Product · DevRel · AI Consulting</b> roles. Based in India, available globally for India / Ireland / EU / UK / Remote.</p>
     <div class="contact-grid">
       <a href="mailto:shayshankrathore05@gmail.com" class="contact-link primary">📧 shayshankrathore05@gmail.com</a>
       <a href="https://www.linkedin.com/in/shayshank-rathore/" target="_blank" class="contact-link">LinkedIn</a>
@@ -638,7 +665,7 @@
 </section>
 
 <footer>
-  <p>Built with HTML · CSS · vanilla JS · ☕ · Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+  <p>Built with HTML · CSS · vanilla JS · Claude as pair programmer · Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
   <p style="margin-top: 6px;">© 2026 Shayshank Rathore</p>
 </footer>
 
