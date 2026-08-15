@@ -116,7 +116,7 @@
     font-size: 1.05rem;
     color: var(--ink-soft);
     max-width: 60ch;
-    margin: 0 0 3rem;
+    margin: 0 0 2rem;
   }
   .intro strong { color: var(--ink); font-weight: 600; }
 
@@ -130,13 +130,154 @@
     background: var(--surface);
     font-size: 0.82rem;
     color: var(--ink-soft);
-    margin-bottom: 3.2rem;
+    margin-bottom: 2rem;
   }
   .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
   .legend .swatch { width: 0.6rem; height: 0.6rem; border-radius: 1px; display: inline-block; }
   .legend .new-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; border: 1.5px dashed var(--new-tag); }
 
+  .notebox {
+    border-left: 3px solid var(--door-mustard);
+    background: var(--surface);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.3rem;
+    margin-bottom: 2rem;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+  .notebox p { margin: 0 0 0.5rem; }
+  .notebox p:last-child { margin-bottom: 0; }
+  .notebox strong { color: var(--ink); font-weight: 600; }
+
+  /* ============ DRILL-DOWN OVERVIEW (Power BI style) ============ */
+  .db-bar {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  body.db-ready .db-bar { display: flex; }
+  .db-progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+    max-width: 220px;
+  }
+  .db-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--door-teal);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+  .db-mode-toggle {
+    font-family: inherit;
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+  }
+  .db-mode-toggle:hover { border-color: var(--link); color: var(--link); }
+
+  .db-overview {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 84px;
+    grid-auto-flow: dense;
+    gap: 0.7rem;
+    margin-bottom: 2.4rem;
+  }
+  body.db-ready .db-overview { display: grid; }
+  body.db-ready.db-drilled .db-overview { display: none; }
+  body.db-ready.db-flat .db-overview { display: none; }
+
+  .db-tile {
+    grid-column: span 2;
+    grid-row: span 1;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    text-align: left;
+    color: #f8f9f5;
+    font-family: inherit;
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .db-tile:hover, .db-tile:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    outline: none;
+  }
+  .db-tile.db-big { grid-row: span 2; }
+  .db-tile.db-wide { grid-column: span 2; }
+  .db-tile.db-small { grid-column: span 1; }
+  .db-tile .db-count {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+  .db-tile.db-big .db-count { font-size: 2.6rem; }
+  .db-tile .db-tile-name {
+    font-size: 0.86rem;
+    font-weight: 600;
+    opacity: 0.95;
+  }
+  .db-tile .db-check {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.8rem;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .db-tile.db-visited .db-check { opacity: 0.85; }
+
+  .db-breadcrumb {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.82rem;
+  }
+  body.db-ready.db-drilled .db-breadcrumb { display: flex; }
+  .db-up {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem 0.3rem 0.6rem;
+    color: var(--ink);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+  }
+  .db-up:hover { border-color: var(--link); color: var(--link); }
+  .db-breadcrumb .db-crumb-sep { color: var(--ink-soft); }
+  .db-breadcrumb .db-crumb-current { color: var(--ink-soft); }
+
   section.category { margin-bottom: 3.6rem; }
+  body.db-ready section.category { display: none; }
+  body.db-ready.db-drilled section.category.db-active { display: block; }
+  body.db-ready.db-flat section.category { display: block; }
+
   .category-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.3rem; }
   .category-head h2 {
     font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
@@ -167,6 +308,8 @@
     line-height: 1.4;
   }
   .app-name a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+  .app-name a:hover { text-decoration-color: var(--link); color: var(--link); }
+  .app-name a::after { content: " ↗"; font-size: 0.75em; opacity: 0.55; }
   .new-flag {
     font-family: ui-monospace, "SF Mono", Consolas, monospace;
     font-size: 0.62rem;
@@ -183,6 +326,9 @@
 
   @media (max-width: 560px) {
     .app-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .db-overview { grid-template-columns: repeat(2, 1fr); }
+    .db-tile { grid-column: span 1 !important; }
+    .db-tile.db-big { grid-row: span 1; }
   }
 
   .cta {
@@ -205,6 +351,10 @@
   }
   footer .byline { margin-top: 1.2rem; font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.8rem; }
   footer .byline a { color: var(--ink-soft); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .db-tile, .db-progress-fill { transition: none; }
+  }
 </style>
 </head>
 <body>
@@ -224,6 +374,12 @@
     reason it matters.
   </p>
 
+  <div class="notebox">
+    <p><strong>Before you download:</strong> a lot of these &mdash; the banks, the supermarkets, MyGovID, the health insurers &mdash; only show up on the Irish Play Store or App Store. Search for them from an Indian account and you'll often get nothing, or "not available in your country."</p>
+    <p>Two ways round it: change your Play Store / App Store country to Ireland in your account settings (Google allows this once a year; Apple lets you browse and grab free apps from another country's store without needing a local card), or just wait and set them up once you've actually landed with an Irish address.</p>
+    <p><strong>Irish Visa Tracker isn't affected</strong> &mdash; it's published for applicants who are still in India, so you can download and use it right now, wherever you are.</p>
+  </div>
+
   <div class="legend">
     <span><span class="swatch" style="background:var(--door-plum)"></span> Before you land</span>
     <span><span class="swatch" style="background:var(--door-teal)"></span> Getting around</span>
@@ -234,7 +390,52 @@
     <span><span class="new-dot"></span> newly added</span>
   </div>
 
-  <section class="category">
+  <div class="db-bar">
+    <span id="dbProgressLabel">0 / 6 categories explored</span>
+    <span class="db-progress-track"><span class="db-progress-fill" id="dbProgressFill"></span></span>
+    <button class="db-mode-toggle" id="dbModeToggle" type="button">Show full list</button>
+  </div>
+
+  <div class="db-overview" id="dbOverview">
+    <button class="db-tile db-big" data-cat="home-shopping" data-name="Home &amp; shopping" style="background:var(--door-mustard)">
+      <span class="db-check">&#10003;</span>
+      <span class="db-count">9</span>
+      <span class="db-tile-name">Home &amp; shopping</span>
+    </button>
+    <button class="db-tile db-big" data-cat="getting-around" data-name="Getting around" style="background:var(--door-teal)">
+      <span class="db-check">&#10003;</span>
+      <span class="db-count">8</span>
+      <span class="db-tile-name">Getting around</span>
+    </button>
+    <button class="db-tile db-wide" data-cat="staying-connected" data-name="Staying connected" style="background:var(--door-green)">
+      <span class="db-check">&#10003;</span>
+      <span class="db-count">4</span>
+      <span class="db-tile-name">Staying connected</span>
+    </button>
+    <button class="db-tile db-small" data-cat="money-banking" data-name="Money &amp; banking" style="background:var(--door-blue)">
+      <span class="db-check">&#10003;</span>
+      <span class="db-count">3</span>
+      <span class="db-tile-name">Money &amp; banking</span>
+    </button>
+    <button class="db-tile db-small" data-cat="health-government" data-name="Health &amp; government" style="background:var(--door-red)">
+      <span class="db-check">&#10003;</span>
+      <span class="db-count">3</span>
+      <span class="db-tile-name">Health &amp; government</span>
+    </button>
+    <button class="db-tile db-small" data-cat="before-you-land" data-name="Before you land" style="background:var(--door-plum)">
+      <span class="db-check">&#10003;</span>
+      <span class="db-count">2</span>
+      <span class="db-tile-name">Before you land</span>
+    </button>
+  </div>
+
+  <div class="db-breadcrumb" id="dbBreadcrumb">
+    <button class="db-up" id="dbUpBtn" type="button">&uarr; All categories</button>
+    <span class="db-crumb-sep">/</span>
+    <span class="db-crumb-current" id="dbCrumbLabel"></span>
+  </div>
+
+  <section class="category" data-cat="before-you-land">
     <div class="category-head">
       <h2 style="color:var(--door-plum)">Before you land</h2>
       <span class="count">2 apps</span>
@@ -245,156 +446,156 @@
     </div>
     <div class="app-row">
       <div class="app-name-wrap"><span class="app-name">Irish Visa Decision Checker</span><span class="new-flag">new</span></div>
-      <div class="app-desc">A browser extension that checks the embassy's published decision list for you, instead of you opening the page and searching your own name every morning.</div>
+      <div class="app-desc">A browser extension that checks the embassy's published decision list for you, instead of you opening the page and searching your own name every morning. <em>(Pending Chrome Web Store review &mdash; link goes live once approved.)</em></div>
     </div>
   </section>
 
-  <section class="category">
+  <section class="category" data-cat="getting-around">
     <div class="category-head">
       <h2 style="color:var(--door-teal)">Getting around</h2>
       <span class="count">8 apps</span>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">LUAS</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.luas.ie/" target="_blank" rel="noopener">LUAS</a></span></div>
       <div class="app-desc">Dublin's tram network. Buy tickets in the app and see when the next tram actually arrives, so you're not guessing at the stop.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">TFI</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.transportforireland.ie/" target="_blank" rel="noopener">TFI</a></span></div>
       <div class="app-desc">The umbrella app for Transport for Ireland. Plan a journey by bus, train or tram anywhere in the country and buy the ticket in one place.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">TFI Live</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.transportforireland.ie/available-apps/tfi-live/" target="_blank" rel="noopener">TFI Live</a></span></div>
       <div class="app-desc">Shows real-time arrival times for buses and trains. Open this one when all you want to know is "how many minutes."</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Moovit</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://moovitapp.com/" target="_blank" rel="noopener">Moovit</a></span></div>
       <div class="app-desc">Compares walking, bus and tram options for the same trip and picks the fastest. Good backup when TFI is slow to load.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Leap Top-Up</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://about.leapcard.ie/leap-top-up-app" target="_blank" rel="noopener">Leap Top-Up</a></span></div>
       <div class="app-desc">Tops up your Leap Card, the physical card most people tap on and off buses and trams with. Cheaper than paying cash on board.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">FreeNow</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.free-now.com/ie/" target="_blank" rel="noopener">FreeNow</a></span></div>
       <div class="app-desc">Ireland's taxi app. Uber barely operates here &mdash; FreeNow is what locals actually open when they need a cab.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">GoCar</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.gocar.ie/" target="_blank" rel="noopener">GoCar</a></span></div>
       <div class="app-desc">Hourly car rental parked around the city. Handy for an IKEA run or a day trip without owning a car.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Irish Rail</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.irishrail.ie/en-ie" target="_blank" rel="noopener">Irish Rail</a></span><span class="new-flag">new</span></div>
       <div class="app-desc">For intercity trains &mdash; Dublin to Cork, Galway, Belfast. TFI handles local transport well, but this is where the actual intercity timetables and tickets live.</div>
     </div>
   </section>
 
-  <section class="category">
+  <section class="category" data-cat="money-banking">
     <div class="category-head">
       <h2 style="color:var(--door-blue)">Money &amp; banking</h2>
       <span class="count">3 apps</span>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">AIB</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://aib.ie/" target="_blank" rel="noopener">AIB</a></span></div>
       <div class="app-desc">One of Ireland's two biggest banks. You'll need an Irish current account for salary, rent and direct debits.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Revolut</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.revolut.com/" target="_blank" rel="noopener">Revolut</a></span></div>
       <div class="app-desc">A digital account you can usually open before you even land. Decent exchange rates, and somewhere to hold money while your Irish bank account is still being set up.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Wise</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://wise.com/" target="_blank" rel="noopener">Wise</a></span><span class="new-flag">new</span></div>
       <div class="app-desc">The cheapest way to move money between India and Ireland. Uses the real exchange rate and shows the fee upfront, unlike most bank transfers.</div>
     </div>
   </section>
 
-  <section class="category">
+  <section class="category" data-cat="home-shopping">
     <div class="category-head">
       <h2 style="color:var(--door-mustard)">Home &amp; shopping</h2>
       <span class="count">9 apps</span>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Aldi</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.aldi.ie/" target="_blank" rel="noopener">Aldi</a></span></div>
       <div class="app-desc">One of the three supermarkets most people shop at day to day &mdash; strong on price.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Tesco</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.tesco.ie/" target="_blank" rel="noopener">Tesco</a></span></div>
       <div class="app-desc">The widest reach of the big three, and its Clubcard app gives regular discounts on a weekly shop.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Lidl Plus</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.lidl.ie/" target="_blank" rel="noopener">Lidl Plus</a></span></div>
       <div class="app-desc">Coupons and discounts tied to your account, refreshed weekly. Worth activating on day one, not just downloading.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">IKEA</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.ikea.com/ie/en/" target="_blank" rel="noopener">IKEA</a></span></div>
       <div class="app-desc">Furnishing a flat from empty is expensive anywhere. The app has stock checks and delivery slots, so you're not hauling flat-pack boxes home on the LUAS.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Decathlon</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.decathlon.ie/" target="_blank" rel="noopener">Decathlon</a></span></div>
       <div class="app-desc">Affordable sports and outdoor gear &mdash; rain jackets and warm layers matter more here than back home.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Boots</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.boots.ie/" target="_blank" rel="noopener">Boots</a></span></div>
       <div class="app-desc">Ireland's main pharmacy chain. The app tracks your Advantage Card points and lets you order repeat prescriptions ahead of time.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Caff&egrave; Nero</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://caffenero.com/" target="_blank" rel="noopener">Caff&egrave; Nero</a></span></div>
       <div class="app-desc">Coffee loyalty stamps. Small thing, adds up to a free coffee every few weeks.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Daft.ie</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.daft.ie/" target="_blank" rel="noopener">Daft.ie</a></span><span class="new-flag">new</span></div>
       <div class="app-desc"><strong>The one you can't skip.</strong> Almost every room, apartment and house for rent in Ireland is listed here first. Set up alerts before you land &mdash; good places go within hours of posting.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">SuperValu</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://supervalu.ie/" target="_blank" rel="noopener">SuperValu</a></span><span class="new-flag">new</span></div>
       <div class="app-desc">The fourth big supermarket, strong in areas Tesco and Aldi don't cover as well. Its Real Rewards scheme gives cash back on shopping.</div>
     </div>
   </section>
 
-  <section class="category">
+  <section class="category" data-cat="health-government">
     <div class="category-head">
       <h2 style="color:var(--door-red)">Health &amp; government</h2>
       <span class="count">3 apps</span>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">MyGovID</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.mygovid.ie/en-IE" target="_blank" rel="noopener">MyGovID</a></span><span class="new-flag">new</span></div>
       <div class="app-desc">How you register for a PPS number, which you need to get paid, open some accounts, and use public services. One of the first things to sort after arrival.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">VHI or Laya</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.vhi.ie/" target="_blank" rel="noopener">VHI</a> or <a href="https://www.layahealthcare.ie/" target="_blank" rel="noopener">Laya</a></span><span class="new-flag">new</span></div>
       <div class="app-desc">Whichever private health insurer your visa route requires. The app is where you book appointments, submit claims, and pull up proof of cover if asked.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">An Post</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.anpost.com/" target="_blank" rel="noopener">An Post</a></span></div>
       <div class="app-desc">Tracks parcels and post, and also runs An Post Money &mdash; a lighter-weight banking option if you want a second one alongside AIB.</div>
     </div>
   </section>
 
-  <section class="category">
+  <section class="category" data-cat="staying-connected">
     <div class="category-head">
       <h2 style="color:var(--door-green)">Staying connected</h2>
       <span class="count">4 apps</span>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Dublin Airport</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.dublinairport.com/" target="_blank" rel="noopener">Dublin Airport</a></span></div>
       <div class="app-desc">Flight status, live security queue times, and parking. Still useful long after you've landed, for whenever family visits.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Virgin Plus</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.virginmedia.ie/" target="_blank" rel="noopener">Virgin Plus</a></span></div>
       <div class="app-desc">Manage your SIM plan, check remaining data, and top up without hunting for a shop.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Eventbrite</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.eventbrite.ie/" target="_blank" rel="noopener">Eventbrite</a></span></div>
       <div class="app-desc">A fast way to find meetups and community events &mdash; one of the easier ways to make friends in a new city.</div>
     </div>
     <div class="app-row">
-      <div class="app-name-wrap"><span class="app-name">Met &Eacute;ireann</span><span class="new-flag">new</span></div>
+      <div class="app-name-wrap"><span class="app-name"><a href="https://www.met.ie/" target="_blank" rel="noopener">Met &Eacute;ireann</a></span><span class="new-flag">new</span></div>
       <div class="app-desc">Ireland's official weather service. Generic weather apps get Irish weather wrong often enough that locals use this one specifically &mdash; it also issues real storm warnings.</div>
     </div>
   </section>
 
   <div class="cta">
     <p>This list is free to use and free to share &mdash; no signup, no catch. If it helped, send it to someone who's about to land.</p>
-    <p>Still in the visa wait? <a href="https://play.google.com/store/apps/details?id=com.shayshankrathore.irishvisadate" target="_blank" rel="noopener">Irish Visa Tracker</a> is free on the Play Store.</p>
+    <p>Still in the visa wait? <a href="https://play.google.com/store/apps/details?id=com.shayshankrathore.irishvisadate" target="_blank" rel="noopener">Irish Visa Tracker</a> is free on the Play Store. More apps: <a href="https://play.google.com/store/apps/developer?id=Shayshank+Rathore" target="_blank" rel="noopener">full developer page</a>.</p>
   </div>
 
   <footer>
@@ -404,6 +605,83 @@
     <p class="byline">Written by <a href="/">Shayshank Rathore</a> &middot; moved to Dublin for an MSc in AI, stayed to build things &middot; <a href="https://www.linkedin.com/in/shayshank-rathore/" target="_blank" rel="noopener">LinkedIn</a></p>
   </footer>
 </div>
+
+<script>
+(function () {
+  var body = document.body;
+  var tiles = Array.prototype.slice.call(document.querySelectorAll('.db-tile'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section.category'));
+  var breadcrumb = document.getElementById('dbBreadcrumb');
+  var crumbLabel = document.getElementById('dbCrumbLabel');
+  var progressLabel = document.getElementById('dbProgressLabel');
+  var progressFill = document.getElementById('dbProgressFill');
+  var upBtn = document.getElementById('dbUpBtn');
+  var modeToggle = document.getElementById('dbModeToggle');
+
+  var STORE_KEY = 'iak_visited_v1';
+  var visited = [];
+  try { visited = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); } catch (e) { visited = []; }
+
+  function saveVisited() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(visited)); } catch (e) {}
+  }
+
+  function updateProgress() {
+    var count = visited.length;
+    progressLabel.textContent = count + ' / ' + tiles.length + ' categories explored';
+    progressFill.style.width = Math.round((count / tiles.length) * 100) + '%';
+    tiles.forEach(function (t) {
+      t.classList.toggle('db-visited', visited.indexOf(t.dataset.cat) !== -1);
+    });
+  }
+
+  function drillDown(cat, skipScroll) {
+    sections.forEach(function (s) {
+      s.classList.toggle('db-active', s.dataset.cat === cat);
+    });
+    var tile = tiles.filter(function (t) { return t.dataset.cat === cat; })[0];
+    crumbLabel.textContent = tile ? tile.dataset.name : cat;
+    body.classList.add('db-drilled');
+    body.classList.remove('db-flat');
+    if (visited.indexOf(cat) === -1) {
+      visited.push(cat);
+      saveVisited();
+    }
+    updateProgress();
+    if (history.replaceState) history.replaceState(null, '', '#' + cat);
+    if (!skipScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function drillUp() {
+    body.classList.remove('db-drilled');
+    if (history.replaceState) history.replaceState(null, '', location.pathname);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tiles.forEach(function (t) {
+    t.addEventListener('click', function () { drillDown(t.dataset.cat); });
+  });
+  upBtn.addEventListener('click', drillUp);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && body.classList.contains('db-drilled')) drillUp();
+  });
+  modeToggle.addEventListener('click', function () {
+    var goingFlat = !body.classList.contains('db-flat');
+    body.classList.toggle('db-flat', goingFlat);
+    body.classList.remove('db-drilled');
+    modeToggle.textContent = goingFlat ? 'Back to categories' : 'Show full list';
+    if (history.replaceState) history.replaceState(null, '', location.pathname);
+  });
+
+  body.classList.add('db-ready');
+  updateProgress();
+
+  var initialCat = location.hash.replace('#', '');
+  if (initialCat && sections.some(function (s) { return s.dataset.cat === initialCat; })) {
+    drillDown(initialCat, true);
+  }
+})();
+</script>
 
 </body>
 </html>
